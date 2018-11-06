@@ -13,7 +13,10 @@ func main() {
 
 	hello := helloWorld.NewHelloWorld("hallo")
 
-	router.GET("/helloword", hello.HandlerHelloWorld)
+	// swagger:route GET /helloword/{name} hellowordWithName
+	//
+	// Responses:
+	//  200: HellowordResponse
 	router.GET("/helloword/:name", hello.HandlerHelloWorldWithName)
 
 	log.Fatal(http.ListenAndServe(":8080", router))

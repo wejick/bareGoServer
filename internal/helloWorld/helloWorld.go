@@ -14,15 +14,21 @@ func NewHelloWorld(hellowordString string) *Helloword {
 	hl.d.Text = hellowordString
 
 	return hl
+
 }
 
-//HandlerHelloWorld handle helloword http request
-func (hl *Helloword) HandlerHelloWorld(writer http.ResponseWriter, r *http.Request, ps httprouter.Params) {
-	httputil.ResponseJSON(hl.d, writer)
-}
-
-//HandlerHelloWorldWithName handle helloword with name http request
+// HandlerHelloWorldWithName handle helloword with name http request
 func (hl *Helloword) HandlerHelloWorldWithName(writer http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+	// swagger:operation GET /helloword/{name} hellowordWithName
+	// ---
+	// parameters :
+	// - name : name
+	//   in : path
+	//   description : your name here bro
+	//   required : true
+	//   type : string
+	// responses :
+	//  '200' : HellowordResponse
 	d := &data{}
 	d.Text = hl.d.Text + " " + ps.ByName("name")
 	httputil.ResponseJSON(d, writer)

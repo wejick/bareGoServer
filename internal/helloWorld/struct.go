@@ -1,11 +1,11 @@
+// go:generate swagger generate spec
 package helloWorld
 
-type (
-	//Helloword struct to containt Helloword object
-	Helloword struct {
-		d data
-	}
-	data struct {
-		Text string `json:"text"`
-	}
-)
+// Helloword struct to containt Helloword object
+// swagger:response HellowordResponse
+type Helloword struct {
+	d data
+}
+type data struct {
+	Text string `json:"text"`
+}
